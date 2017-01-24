@@ -1,0 +1,25 @@
+{% load scheduletags %}
+<table class="table-condensed table-striped" id="table-month">
+{% if day_names %}
+<thead>
+  <th class="td-weekday-names col-xs-1 col-sm-1 col-md-1 col-lg-1">&nbsp;</th>
+  {% for day_name in day_names %}
+    <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">{{ day_name }}</th>
+  {% endfor %}
+</thead>
+{% endif %}
+<tbody class="tbody-month">
+  {% for week in month.get_weeks %}
+      <tr>
+      <td id="td-week">
+        <div id="div-week">
+            {{week.start|date:"W"}}
+        </div>
+      </td>
+      {% for day in week.get_days %}
+          {% day_cell calendar day month size %}
+      {% endfor %}
+      </tr>
+  {% endfor %}
+</tbody>
+</table>

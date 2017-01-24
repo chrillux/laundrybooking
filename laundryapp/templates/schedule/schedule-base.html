@@ -1,0 +1,19 @@
+{% extends "schedule/site_base.html" %}
+{% load staticfiles i18n %}
+{% block extra_head %}
+{{ block.super }}
+{% endblock %}
+{% block header %}
+<div id="site-header">
+    <div class="dropdown">
+        <img class="dropdown-toggle img-rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenu2" src="{{ request.user.profile.profile_image_url }}"/>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'mybookings' %}">My bookings</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="/">Calendar</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'account_logout' %}?next=/">Logout</a></li>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,173 @@
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body { 
+    background: url(/static/img/fabric_of_squares_gray.png) repeat 0 0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+}
+
+h1 {
+    font-family: 'Arvo', Georgia, Times, serif;
+    font-size: 59px;
+    line-height: 70px;
+    text-shadow: 1px 1px 1px #ccc;
+}
+
+h2 {
+    font-family: 'Arvo', Georgia, Times, serif;
+    font-size: 39px;
+    line-height: 70px;
+}
+
+h3 {
+    font-family: 'Arvo', Georgia, Times, serif;
+    font-size: 27px;
+    line-height: 40px;
+} 
+
+h4 {
+    font-family: 'Arvo', Georgia, Times, serif;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+p, div {
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.pageContainer {
+    position: relative;
+    margin: 0 auto;
+    height: 100%;
+    min-height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    margin: 0 auto;
+    height: auto;
+    padding-bottom: 40px;
+}
+
+.container-background {
+    background: white;
+}
+
+.col-md-4-no-occ:hover {
+    background-color:#fff0bb;
+}
+
+#div-week {
+    color: black;
+    padding: 14px 0px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+}
+
+#div-create-change-event {
+    background-color: white;
+    box-shadow: 1px 10px 10px 5px grey;
+    color: black;
+    padding: 15px 10px 1px 10px;
+    border-radius: 15px;
+    text-align: center; 
+    text-decoration: none;
+    width: 75%;
+    margin: 0 auto;
+    float: none;
+}
+
+#div-upcoming-bookings {
+    text-align: center; 
+    display: inline-block;
+}
+
+#now-div {
+    margin: 10 auto;
+    padding: 5px 0px;
+}
+
+.div-mybookings-last {
+    padding: 40px;
+}
+
+.table-datetime {
+    border-radius: 10px;
+    width: 65%;
+    margin: 0 auto;
+    float: none;
+}
+
+#table-day {
+    border-radius: 0px;
+    width: 70%;
+    margin: 0 auto;
+    float: none;
+    overflow: auto;
+}
+
+#table-month {
+    width: 90%;
+    margin: 20px auto;
+    float: none;
+    background: white;
+    border-radius: 15px;
+    border: 0;
+}
+
+.td-datetime {
+    padding: 10px;
+    text-align: left;
+}
+
+.td-day-empty:hover {
+    background-color:#fff0bb;
+}
+
+#td-week {
+    border: 0;
+    height: 50px;
+    vertical-align: bottom;
+}
+
+.td-weekday-names {
+    border: none;
+    border-collapse: collapse;
+}
+
+.tbody-month {
+    border-radius: 15px;
+}
+
+#form-datetime {
+    padding-top: 10px;
+}
+
+.datetime-alert {
+    margin: 10px auto;
+    width: 80%;
+}
+
+#site-header {
+    background: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 2px;
+    margin: 0 auto;
+    float: none;
+}
+
+.error_message {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+

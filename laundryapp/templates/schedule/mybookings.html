@@ -1,0 +1,49 @@
+{% extends "schedule/schedule-base.html" %}
+{% load i18n scheduletags static %}
+
+{% block body %}
+    <h1>{{ calendar.name }}</h1>
+    <div id="div-create-change-event">
+        <h1>My bookings</h1>
+        <div>
+            <h2>Upcoming bookings</h2>
+            <div>
+                {% if upcoming_bookings %}
+                <table class="table table-striped table-month">
+                    <tr>
+                        <th>Start time</th>
+                        <th>End time</th> 
+                    </tr>
+                    {% for upcoming_booking in upcoming_bookings  %}
+                    <tr>
+                        <td>{{ upcoming_booking.start|date:"D Y-m-d H:i" }}</td>
+                        <td>{{ upcoming_booking.end|date:"D Y-m-d H:i" }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% endif %}
+                {% if not upcoming_bookings %}
+                <h3 class="text-info">No upcoming bookings.</h3>
+                {% endif %}
+            </div>
+            <div class="div-mybookings-last">
+                <h4>Last bookings</h4>
+                <div>
+                    <table class="table table-striped table-month">
+                        <tr>
+                            <th>Start time</th>
+                            <th>End time</th> 
+                        </tr>
+                        {% for last_booking in last_bookings  %}
+                        <tr>
+                            <td>{{ last_booking.start|date:"D Y-m-d H:i" }}</td>
+                            <td>{{ last_booking.end|date:"D Y-m-d H:i" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,54 @@
+{% load i18n %}
+{% load scheduletags %}
+
+<div class="modal fade" id="{% hash_occurrence occurrence %}" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div id="detail-title">
+        <h4 class="modal-title" id="myModalLabel">{{occurrence.title}}</h4>
+        </div>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+            <tr>
+                <td class="left">{% trans "Starts" %}</td>
+                <td>{% blocktrans with occurrence.start|date:"D Y-m-d H:i" as start_date %}{{ start_date }}{% endblocktrans %}</td>
+            </tr>
+            <tr>
+                <td class="left">{% trans "Ends" %}</td>
+                <td>{% blocktrans with occurrence.end|date:"D Y-m-d H:i" as end_date %}{{ end_date }}{% endblocktrans %}</td>
+            </tr>
+            {% if occurrence.event.rule %}
+                {% if not occurrence.id %}
+                    <tr>
+                        <td class="left">{% trans "Reoccurs" %}</td><td>{{occurrence.event.rule}}</td>
+                    </tr>
+                    {% if occurrence.event.end_recurring_period %}
+                        <tr>
+                            <td class="left">{% trans "Until" %}</td>
+                            <td>{% blocktrans with occurrence.event.end_recurring_period|date:_("DATETIME_FORMAT") as end_date %}{{ end_date }}{% endblocktrans %}</td>
+                        </tr>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </table>
+        {% if occurrence.description %}
+        <h3>{% trans "Description" %}</h3>
+        <p>{{occurrence.description}}</p>
+        {% endif %}
+      </div>
+      <div class="modal-footer">
+        {% if occurrence.event.creator_id == request.user.id %}
+            <form method="POST" action="{{ delete_event }}" id=delete_form_{{occurrence.event.id}}>
+                {% csrf_token %}
+            </form>
+            <button type="submit" form="delete_form_{{occurrence.event.id}}" class="btn btn-primary">Delete</button>
+            <a href="{{ edit_event }}?next={{here}}"><button type="button" class="btn btn-primary">Edit</button></a>
+        {% endif %}
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

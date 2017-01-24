@@ -1,0 +1,46 @@
+{% extends "schedule/schedule-base.html" %}
+{% load i18n scheduletags static %}
+{% block extra_head %}
+    <!-- Latest compiled and minified JavaScript -->
+    <link rel="stylesheet" href="{% static "bootstrap/dist/css/datetimepicker.css" %}" type="text/css" media="screen">
+    <script type="text/javascript" src="{% static "bootstrap/dist/js/bootstrap-datetimepicker.js" %}"></script>
+{% endblock %}
+{% block body %}
+
+<div id='div-create-change-event'>
+<b>{% trans "Create or change event. All fields are required." %}</b>
+    <div id="div-form-datetime" class="row-field">
+    {% if form.non_field_errors %}
+    {% for err in form.non_field_errors %}
+    <div class="alert alert-danger datetime-alert" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span>{{ err }}</span>
+    </div>
+    {% endfor %}
+    {% endif %}
+        {% if form %}
+            <form id="dateTimeExample" action="" method="POST" class="form-group">
+                {% csrf_token %}
+    <table class="table-datetime">
+    {% for field in form.visible_fields %}
+        {% if field.label == "Start" or field.label == "End" %}
+            <tr>
+            <td class="td-datetime">
+            {{ field.label }}
+            </td>
+            <td class="td-datetime">
+            {{ field }}
+            </td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </table>
+                <br/>
+            <input type='hidden' name="title" value="{{ request.user.first_name }} {{ request.user.last_name }}" />
+            <input id="submit" type="submit" value="Submit" class="btn">
+            <input type="submit" name="cancel" value="Cancel" class="btn">
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

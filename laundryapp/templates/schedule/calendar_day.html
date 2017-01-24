@@ -1,0 +1,25 @@
+{% extends "schedule/schedule-base.html" %}
+{% load laundryapptags scheduletags i18n %}
+
+{% block body %}
+
+{% include "schedule/_dialogs.html" %}
+<div class="row row-centered">
+    <h1>{{ calendar.name }}</h1>
+    {% prevnext "day_calendar" calendar period "l, F d, Y" %}
+    <div class="now" id="now-div">
+      <a class="btn btn-primary gradient" href="{% url "day_calendar" calendar.slug %}">
+        {% trans "Today" %}
+      </a>
+      <a class="btn btn-primary gradient" href="{% url "month_calendar" calendar.slug %}{% querystring_for_date period.start 2 %}">
+        {% trans "Month" %}
+      </a>
+    </div>
+</div>
+<div class="row row-centered">
+    <div class="table-responsive">
+      {% laundryapp_daily_table period %}
+    </div>
+</div>
+
+{% endblock %}
