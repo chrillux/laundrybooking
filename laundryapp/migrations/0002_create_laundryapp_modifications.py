@@ -46,6 +46,3 @@ for ENV in ENVS:
                                     [ os.environ['CALENDAR_NAME'], os.environ['CALENDAR_SLUG'] ]) ]),
             ]
 
-# 1|Palandergatan 17-19|palandergatan
-# sqlite> .schema schedule_calendar
-# CREATE TABLE "schedule_calendar" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(200) NOT NULL, "slug" varchar(200) NOT NULL);
