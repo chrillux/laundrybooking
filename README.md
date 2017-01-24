@@ -20,6 +20,10 @@ Run:
 $ ./manage.py migrate
 ```
 
+The first person that creates an account automatically becomes admin. So there is a known race condition. When you setup the application, either log in with facebook or create a standard account to become admin and become member of the group "laundryapp".
+
+To make it possible for other people to use the application, they have to login once, to create their account, then admin needs to add them to the group "laundryapp". This is easily done via the django admin interface.
+
 ## Contributors
 * [chrillux](https://github.com/chrillux)
 
