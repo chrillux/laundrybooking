@@ -3,6 +3,7 @@ import sys
 
 from django import forms
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 from schedule.forms import EventForm
 from schedule.models import Event
@@ -33,8 +34,17 @@ class LaundryEventForm(EventForm):
         super(LaundryEventForm, self).__init__(*args, **kwargs)
 
     def clean(self):
+        self.date_passed()
         self.event_between()
         self.max_hours_booking()
+
+    def date_passed(self):
+        form_start = self.cleaned_data.get('start')
+        now = timezone.now()
+
+        if now > form_start:
+            raise forms.ValidationError("The date you chose has already passed. Please choose another date.")
+        super(LaundryEventForm, self).clean()
 
     def event_between(self):
         form_start = self.cleaned_data.get('start')
