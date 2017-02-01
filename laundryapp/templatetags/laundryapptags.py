@@ -11,8 +11,8 @@ from schedule.conf.settings import SCHEDULER_PREVNEXT_LIMIT_SECONDS
 
 register = template.Library()
 
-from django.utils import timezone
 from pytz import timezone
+from django.utils import timezone
 
 import datetime
 import sys
