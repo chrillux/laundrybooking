@@ -5,6 +5,9 @@ from django.conf import settings
 
 from django import template
 from django.core.urlresolvers import reverse
+from django.utils.safestring import mark_safe
+
+from schedule.conf.settings import SCHEDULER_PREVNEXT_LIMIT_SECONDS
 
 register = template.Library()
 
@@ -14,7 +17,7 @@ import datetime
 import sys
 
 @register.inclusion_tag("schedule/_daily_table.html", takes_context=True)
-def laundryapp_daily_table(context, day, start=0, end=24, increment=60):
+def laundryapp_daily_table(context, day, start=6, end=23, increment=60):
     user = context['request'].user
     addable = CHECK_EVENT_PERM_FUNC(None, user)
     if 'calendar' in context:
@@ -64,3 +67,27 @@ def laundryapp_create_event_url(context, calendar, slot):
         querystring_for_date(slot))
     return context
 
+@register.simple_tag
+def prev_url(target, calendar, period):
+    now = timezone.now()
+    delta = now - period.prev().start
+    slug = calendar.slug
+    if delta.total_seconds() > SCHEDULER_PREVNEXT_LIMIT_SECONDS:
+        return ''
+
+    return mark_safe('<a href="%s%s" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-circle-arrow-left"></span></a>' % (
+        reverse(target, kwargs=dict(calendar_slug=slug)),
+        querystring_for_date(period.prev().start)))
+
+@register.simple_tag
+def next_url(target, calendar, period):
+    now = timezone.now()
+    slug = calendar.slug
+
+    delta = period.next().start - now
+    if delta.total_seconds() > SCHEDULER_PREVNEXT_LIMIT_SECONDS:
+        return ''
+
+    return mark_safe('<a href="%s%s" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-circle-arrow-right"></span></a>' % (
+        reverse(target, kwargs=dict(calendar_slug=slug)),
+        querystring_for_date(period.next().start)))
