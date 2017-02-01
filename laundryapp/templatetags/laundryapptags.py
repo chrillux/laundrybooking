@@ -5,13 +5,13 @@ from django.conf import settings
 
 from django import template
 from django.core.urlresolvers import reverse
-from django.utils import timezone
 from django.utils.safestring import mark_safe
 
 from schedule.conf.settings import SCHEDULER_PREVNEXT_LIMIT_SECONDS
 
 register = template.Library()
 
+from django.utils import timezone
 from pytz import timezone
 
 import datetime
