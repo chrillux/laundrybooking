@@ -43,13 +43,6 @@ p, div {
     line-height: 25px;
 }
 
-.pageContainer {
-    position: relative;
-    margin: 0 auto;
-    height: 100%;
-    min-height: 100%;
-}
-
 #wrap {
     min-height: 100%;
     margin: 0 auto;
@@ -180,5 +173,10 @@ span.glyphicon-circle-arrow-left, span.glyphicon-circle-arrow-right {
 
 .period_name {
     font-size: 1.2em;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
 }
 
