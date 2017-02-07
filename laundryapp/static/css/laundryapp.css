@@ -171,3 +171,14 @@ p, div {
     background-color: #FFBABA;
 }
 
+span.glyphicon-circle-arrow-left, span.glyphicon-circle-arrow-right {
+    font-size: 2em;
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+
+.period_name {
+    font-size: 1.2em;
+}
+

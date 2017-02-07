@@ -1,12 +1,12 @@
 from schedule.conf.settings import CHECK_EVENT_PERM_FUNC, CHECK_CALENDAR_PERM_FUNC
 from schedule.templatetags.scheduletags import querystring_for_date
 
-from django.conf import settings
-
 from django import template
 from django.core.urlresolvers import reverse
 
 register = template.Library()
+
+from django.conf import settings
 
 from pytz import timezone
 
@@ -14,7 +14,7 @@ import datetime
 import sys
 
 @register.inclusion_tag("schedule/_daily_table.html", takes_context=True)
-def laundryapp_daily_table(context, day, start=0, end=24, increment=60):
+def laundryapp_daily_table(context, day, start=6, end=23, increment=60):
     user = context['request'].user
     addable = CHECK_EVENT_PERM_FUNC(None, user)
     if 'calendar' in context:
