@@ -136,7 +136,7 @@ class LaundryMyBookings(ListView):
         now = timezone.now()
         upcoming_bookings = Event.objects.filter(creator_id=user.id, end__gte=now).order_by('start')
 
-        last_bookings = Event.objects.filter(creator_id=user.id, end__lte=now).order_by('-id')[:5]
+        last_bookings = Event.objects.filter(creator_id=user.id, end__lte=now).order_by('-start')[:5]
         return render(request, 'schedule/mybookings.html', {'last_bookings': last_bookings, 'upcoming_bookings': upcoming_bookings})
 
 @receiver(user_signed_up)
