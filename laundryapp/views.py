@@ -130,7 +130,7 @@ class LaundryMyBookings(ListView):
     model = Event
 
     def get(self, request, *args, **kwargs):
-        
+
         user = request.user
 
         now = timezone.now()
