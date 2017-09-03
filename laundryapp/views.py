@@ -59,7 +59,7 @@ class LaundryCreateEventView(LaundryCancelButtonMixin, CreateEventView, EventEdi
                 start = datetime.datetime(**date)
                 initial_data = {
                     "start": start,
-                    "end": start + datetime.timedelta(minutes=60)
+                    "end": start + datetime.timedelta(hours=3)
                 }
             except TypeError:
                 raise Http404
