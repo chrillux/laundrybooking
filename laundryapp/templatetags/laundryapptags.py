@@ -11,7 +11,6 @@ from django.conf import settings
 from pytz import timezone
 
 import datetime
-import sys
 
 @register.inclusion_tag("schedule/_daily_table.html", takes_context=True)
 def laundryapp_daily_table(context, day, start=6, end=23, increment=60):
@@ -47,7 +46,6 @@ def _cook_slots(period, increment):
 
 @register.inclusion_tag("schedule/_create_event_options.html", takes_context=True)
 def laundryapp_create_event_url(context, calendar, slot):
-    print >> sys.stderr, "In laundryapp templatetags!"
     context.update({
         'calendar': calendar,
         'MEDIA_URL': getattr(settings, "MEDIA_URL"),
