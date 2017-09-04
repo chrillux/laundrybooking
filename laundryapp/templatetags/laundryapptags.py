@@ -13,7 +13,7 @@ from pytz import timezone
 import datetime
 
 @register.inclusion_tag("schedule/_daily_table.html", takes_context=True)
-def laundryapp_daily_table(context, day, start=6, end=23, increment=60):
+def laundryapp_daily_table(context, day, start=settings.LAUNDRYAPP_DAY_START, end=settings.LAUNDRYAPP_DAY_END, increment=60):
     user = context['request'].user
     addable = CHECK_EVENT_PERM_FUNC(None, user)
     if 'calendar' in context:

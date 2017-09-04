@@ -198,3 +198,6 @@ ACCOUNT_SIGNUP_FORM_CLASS = 'laundryapp.forms.SignupForm'
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 FIRST_DAY_OF_WEEK = 1
+
+LAUNDRYAPP_DAY_START = 6
+LAUNDRYAPP_DAY_END   = 23
