@@ -21,11 +21,11 @@
 <table align="center" class="table table-hover">
 <tr>
 <td>{% trans "Starts" %}</td>
-<td>{% blocktrans with event.start|date:_("DATETIME_FORMAT") as start_date %}{{ start_date }}{% endblocktrans %}</td>
+<td>{% blocktrans with event.start|date:_("D Y-m-d H:i") as start_date %}{{ start_date }}{% endblocktrans %}</td>
 </tr>
 <tr>
 <td>{% trans "Ends" %}</td>
-<td>{% blocktrans with event.end|date:_("DATETIME_FORMAT") as end_date %}{{ end_date }}{% endblocktrans %}</td>
+<td>{% blocktrans with event.end|date:_("D Y-m-d H:i") as end_date %}{{ end_date }}{% endblocktrans %}</td>
 </tr>
 </table>
 {% if event.description %}
