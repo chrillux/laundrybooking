@@ -2,6 +2,7 @@ import datetime
 import sys
 
 from django import forms
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 
@@ -37,6 +38,7 @@ class LaundryEventForm(EventForm):
         self.date_passed()
         self.event_between()
         self.max_hours_booking()
+        self.starttime_and_endtime_within_limit()
 
     def date_passed(self):
         form_start = self.cleaned_data.get('start')
@@ -73,6 +75,19 @@ class LaundryEventForm(EventForm):
 
         if has_entries_between:
             raise forms.ValidationError("There is another booking within the times you chose, please change.")
+        super(LaundryEventForm, self).clean()
+
+    def starttime_and_endtime_within_limit(self):
+        form_start_hour = self.cleaned_data.get('start').hour
+        form_end_hour = self.cleaned_data.get('end').hour
+        day_start = settings.LAUNDRYAPP_DAY_START
+        day_end = settings.LAUNDRYAPP_DAY_END
+
+        if (form_start_hour > day_end or form_start_hour < day_start):
+            raise forms.ValidationError("The booking start time is incorrect, please change.")
+        elif (form_end_hour > day_end or form_end_hour < day_start):
+            raise forms.ValidationError("The booking end time is incorrect, please change.")
+
         super(LaundryEventForm, self).clean()
 
     def max_hours_booking(self):
