@@ -94,7 +94,7 @@ class LaundryEventForm(EventForm):
         form_start = self.cleaned_data.get('start')
         form_end = self.cleaned_data.get('end')
 
-        max_hours = 6
+        max_hours = settings.LAUNDRYAPP_MAX_HOURS
         max_minutes = max_hours * 60
 
         booking_time = form_end - form_start
