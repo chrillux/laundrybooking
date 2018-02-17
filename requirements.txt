@@ -7,7 +7,7 @@ django-scheduler==0.8
 gunicorn==19.6.0
 icalendar==3.11.1
 oauthlib==2.0.1
-psycopg2==2.6.2
+psycopg2==2.7.4
 python-dateutil==2.6.0
 python-openid==2.2.5
 pytz==2016.10
