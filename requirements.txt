@@ -11,7 +11,7 @@ psycopg2==2.7.4
 python-dateutil==2.6.0
 python-openid==2.2.5
 pytz==2016.10
-requests==2.12.4
+requests==2.20.0
 requests-oauthlib==0.7.0
 six==1.10.0
 whitenoise==3.2.3
