@@ -20,7 +20,7 @@ for ENV in ENVS:
     try:
         os.environ[ENV]
     except KeyError:
-        print "Please set the environment variable %s" % ENV
+        print("Please set the environment variable {}".format(ENV))
         missing_env = 1
 
     class Migration(migrations.Migration):
