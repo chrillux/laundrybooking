@@ -10,6 +10,9 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'mybookings' %}">My bookings</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="/">Calendar</a></li>
+            {% if request.user.is_superuser %}
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="/admin">Admin</a></li>
+            {% endif %}
             <li role="presentation" class="divider"></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'account_logout' %}?next=/">Logout</a></li>
         </div>
