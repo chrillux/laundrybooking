@@ -13,7 +13,7 @@
         <form class="login" method="POST" action="{% url 'account_login' %}">
           {% csrf_token %}
             {{ form.non_field_errors }}
-            <input id="id_login" class="login-input" maxlength="30" name="login" placeholder="Email" type="text" />{{ form.login.errors }}<br>
+            <input id="id_login" class="login-input" maxlength="50" name="login" placeholder="Email" type="text" />{{ form.login.errors }}<br>
             <input id="id_password"  class="login-input" name="password" placeholder="Password" type="password" />{{ form.password.errors }}<br>
             <div class="remember-forgot-section">
                 <input id="id_remember" name="remember" type="checkbox" />
